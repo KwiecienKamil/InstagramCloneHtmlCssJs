@@ -12,6 +12,7 @@
 
 :root {
     --grayish: #2B2B2B;
+    
 }
 
 a {
@@ -70,12 +71,10 @@ body {
     border-radius: 5px;
     transition: .5s ease-out;
 }
-
 .center {
     display: flex;
     flex-direction: column;
     width: 40%;
-    
 }
 .center_top {
     display: flex;
@@ -83,8 +82,6 @@ body {
     gap: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--grayish);
-
-   
 }
 .center_top a {
     text-decoration: none;
@@ -92,6 +89,25 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
 }
+.reels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0 1rem 0;
+}
+.singleReel {
+    height: 60px;
+    width: 70px;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 2px solid red
+}
+.singleReel img {
+    height: 100%;
+    width: 100%;
+}
+
 .right {
     padding-top: 1rem;
     width: 18%;
@@ -114,8 +130,13 @@ body {
 .profile_avatar {
     height: 40px;
     width: 40px;
+    position: relative;
     border-radius: 100%;
-    background-color: royalblue;
+    overflow: hidden;
+}
+.profile_avatar img {
+    height: 100%;
+    
 }
 .profile_name a {
     font-weight: 600;
