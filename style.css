@@ -12,11 +12,6 @@
 
 :root {
     --grayish: #2B2B2B;
-    
-}
-
-a {
-    
 }
 
 main {
@@ -96,18 +91,21 @@ body {
     margin: 1rem 0 1rem 0;
 }
 .singleReel {
-    height: 60px;
-    width: 70px;
     position: relative;
-    border-radius: 100%;
     overflow: hidden;
-    border: 2px solid red
+    cursor: pointer;
 }
 .singleReel img {
-    height: 100%;
+    max-width: 65px;
+    height: 60px;
     width: 100%;
+    border: 2px solid red;
+    border-radius: 100%;
 }
-
+.reelUsername {
+    text-align: center;
+    font-size: .8rem;
+}
 .right {
     padding-top: 1rem;
     width: 18%;
