@@ -32,8 +32,8 @@ const Posts = [
         img: "https://a.cdn-hotels.com/gdcs/production181/d1415/58842a68-207a-4fb1-a85c-102eba660798.jpg?impolicy=fcrop&w=800&h=533&q=medium",
         profile: "https://www.recordnet.com/gcdn/presto/2021/03/22/NRCD/9d9dd9e4-e84a-402e-ba8f-daa659e6e6c5-PhotoWord_003.JPG",
         name: "Photograph",
-        time: 5,
-        likes: 12300,
+        time: 2,
+        likes: "321,605",
         desc: "Insane view"
     },
     {
@@ -41,17 +41,33 @@ const Posts = [
         profile: "https://www.recordnet.com/gcdn/presto/2021/03/22/NRCD/9d9dd9e4-e84a-402e-ba8f-daa659e6e6c5-PhotoWord_003.JPG",
         name: "Photograph",
         time: 5,
-        likes: 2333,
+        likes: "3,972",
         desc: "Insane view"
     },
     {
         img: "https://a.cdn-hotels.com/gdcs/production181/d1415/58842a68-207a-4fb1-a85c-102eba660798.jpg?impolicy=fcrop&w=800&h=533&q=medium",
         profile: "https://www.recordnet.com/gcdn/presto/2021/03/22/NRCD/9d9dd9e4-e84a-402e-ba8f-daa659e6e6c5-PhotoWord_003.JPG",
         name: "Photograph",
-        time: 5,
-        likes: 21605,
+        time: 3,
+        likes: "2,202",
         desc: "Insane view"
     },
+    {
+        img: "https://a.cdn-hotels.com/gdcs/production181/d1415/58842a68-207a-4fb1-a85c-102eba660798.jpg?impolicy=fcrop&w=800&h=533&q=medium",
+        profile: "https://www.recordnet.com/gcdn/presto/2021/03/22/NRCD/9d9dd9e4-e84a-402e-ba8f-daa659e6e6c5-PhotoWord_003.JPG",
+        name: "Photograph",
+        time: 1,
+        likes: "14,125",
+        desc: "Insane view"
+    },
+    {
+        img: "https://a.cdn-hotels.com/gdcs/production181/d1415/58842a68-207a-4fb1-a85c-102eba660798.jpg?impolicy=fcrop&w=800&h=533&q=medium",
+        profile: "https://www.recordnet.com/gcdn/presto/2021/03/22/NRCD/9d9dd9e4-e84a-402e-ba8f-daa659e6e6c5-PhotoWord_003.JPG",
+        name: "Photograph",
+        time: 6,
+        likes: "21,605",
+        desc: "Insane view"
+    }
     
 ]
 
@@ -76,22 +92,56 @@ for(let i = 0; i < Reels.length; i++) {
 
     // Posts
     let newPost = document.createElement("div")
-    let postImg = document.createElement("div")
+    let newInfo = document.createElement("div");
+    let newProfilePic = document.createElement("div")
+    let newNavDiv = document.createElement("div")
+    let postImg = document.createElement("img")
     let profileImg = document.createElement("img")
     let newA = document.createElement("a");
+    let newTime = document.createElement("p")
     let newPar = document.createElement("p")
+    let newLikes = document.createElement("p")
 
+    // buttons
+    const loveBtn = document.createElement("button");
+    loveBtn.classList.add("loveBtn")
+    loveBtn.innerHTML = `<i class="fa-regular fa-heart"></i>`
+
+    const comBtn = document.createElement("button");
+    comBtn.classList.add("comBtn")
+    comBtn.innerHTML = `<i class="fa-regular fa-comment"></i>`
+
+    const sendBtn = document.createElement("button");
+    sendBtn.classList.add("sendBtn")
+    sendBtn.innerHTML = `<i class="fa-regular fa-paper-plane"></i>`
+
+
+    // post
     newPost.classList.add("singlePost");
-    newPost.appendChild(profileImg);
+    newPost.appendChild(newInfo)
+    newInfo.classList.add("postInfo") 
+    newInfo.appendChild(newProfilePic)
+    newProfilePic.appendChild(profileImg);
     profileImg.src= Posts[i].profile
-    profileImg.classList.add("profilePicture");
-    newPost.appendChild(newA);
+    newProfilePic.classList.add("profilePicture");
+    newInfo.appendChild(newA);
+    newInfo.appendChild(newTime)
+    newTime.innerHTML = `${Posts[i].time}d`
     newA.innerHTML = Posts[i].name
     newPost.appendChild(postImg);
     postImg.src= Posts[i].img;
+    newPost.appendChild(newNavDiv);
+    newNavDiv.classList.add("postNav")
+    newNavDiv.appendChild(loveBtn)
+    newNavDiv.appendChild(comBtn)
+    newNavDiv.appendChild(sendBtn)
+    // Likes
+    newPost.appendChild(newLikes)
+    newLikes.innerHTML = `${Posts[i].likes} likes`
+
+    // desc
     newPost.appendChild(newPar);
     newPar.innerHTML = Posts[i].desc
-
     postsDiv.appendChild(newPost)
 
 }

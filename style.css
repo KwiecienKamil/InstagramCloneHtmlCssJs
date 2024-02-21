@@ -134,7 +134,6 @@ body {
 }
 .profile_avatar img {
     height: 100%;
-    
 }
 .profile_name a {
     font-weight: 600;
@@ -148,4 +147,50 @@ body {
 }
 .suggested p {
     color: gray;
+}
+.posts {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.singlePost {
+    max-width: 75%;
+    position: relative;
+}
+.postInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .5rem 0 .5rem 0;
+}
+.singlePost img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.profilePicture {
+    margin-left: .5rem;
+    max-width: 50px;
+}
+.profilePicture img {
+    object-fit: cover;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+.postNav {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+.postNav button i{
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.loveBtn, .comBtn, .sendBtn {
+    background: transparent;
+    border: none;
+    padding: .5rem 0 .5rem 0;
 }
