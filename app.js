@@ -21,11 +21,7 @@ const Reels = [
         img:  "https://www.shutterstock.com/image-photo/cheerful-african-american-guy-smiling-600nw-2029465811.jpg",
         name: "broski12"
     },
-    {
-        img:  "https://img.freepik.com/free-photo/handsome-young-african-american-with-pink-polo-tshirt_176420-32131.jpg",
-        name: "M1ke"
-    },
-    
+   
 ];
 
 const Posts = [
@@ -69,7 +65,10 @@ const Posts = [
         likes: "111,605",
         desc: "Setup for 2024"
     },
-]
+];
+
+
+
 
 const reelsDiv = document.querySelector(".reels");
 const postsDiv = document.querySelector(".posts");
@@ -90,14 +89,18 @@ for(let i = 0; i < Reels.length; i++) {
 
     reelsDiv.appendChild(newDiv)
 
+}
+for(let i = 0; i < Reels.length; i++) {
     // Posts
     let newPost = document.createElement("div")
     let newInfo = document.createElement("div");
+    let descDiv = document.createElement("div");
     let newProfilePic = document.createElement("div")
     let newNavDiv = document.createElement("div")
     let postImg = document.createElement("img")
     let profileImg = document.createElement("img")
     let newA = document.createElement("a");
+    let newA2 = document.createElement("a");
     let newTime = document.createElement("p")
     let newPar = document.createElement("p")
     let newLikes = document.createElement("p")
@@ -120,7 +123,6 @@ for(let i = 0; i < Reels.length; i++) {
     saveBtn.innerHTML = `<i class="fa-regular fa-bookmark"></i>`
 
     
-
 
     // post
     newPost.classList.add("singlePost");
@@ -148,12 +150,37 @@ for(let i = 0; i < Reels.length; i++) {
     newLikes.innerHTML = `${Posts[i].likes} likes`
 
     // desc
-    newPost.appendChild(newPar);
+    newPost.appendChild(descDiv)
+    descDiv.style.display = "flex";
+    descDiv.style.alignItems = "center";
+    descDiv.style.gap = "5px";
+    descDiv.style.marginTop = "5px";
+    descDiv.appendChild(newA2);
+    descDiv.appendChild(newPar);
+    newA2.innerHTML = Posts[i].name
+    newA2.style.fontWeight = "600"
     newPar.innerHTML = Posts[i].desc
     postsDiv.appendChild(newPost)
-
 }
 
+// suggestions
+
+
+    const suggestions = ["Xasdas","ertergf", "dsafasd"]
+    let mainSugDiv = document.querySelector(".suggestions")
+
+    for(let i = 0; i < suggestions.length; i++) {
+    let sugDiv = document.createElement("div");
+    let sugBtn = document.createElement("button");
+    let sugA = document.createElement("a");
+    mainSugDiv.appendChild(sugDiv);
+    sugDiv.classList.add("suggestion");
+    sugDiv.appendChild(sugA);
+    sugDiv.appendChild(sugBtn);
+    sugBtn.classList.add("suggestion_btn")
+    sugBtn.innerHTML = "Follow";
+    sugA.innerHTML = suggestions[i]
+    }
 
 
 
