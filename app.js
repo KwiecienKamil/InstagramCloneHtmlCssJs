@@ -3,7 +3,7 @@
 const Reels = [
     {
         img: "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
-        name: "Marcus_x"
+        name: `Marcus_x`
     },
     {
         img: "https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg",
@@ -73,11 +73,17 @@ const Posts = [
 const reelsDiv = document.querySelector(".reels");
 const postsDiv = document.querySelector(".posts");
 
+
 for(let i = 0; i < Reels.length; i++) {
     // Reels
     let newDiv = document.createElement("div")
     let newImg = document.createElement("img")
+    let nickDiv = document.createElement("div")
     let newP =  document.createElement("p")
+    let verified = document.createElement("span");
+
+    verified.innerHTML = `<i class="fa-solid fa-certificate"></i>`
+    verified.classList.add("verified")
     
     newImg.src = Reels[i].img;
     newDiv.classList.add("singleReel")
@@ -85,8 +91,16 @@ for(let i = 0; i < Reels.length; i++) {
     newP.classList.add("reelUsername")
 
     newDiv.appendChild(newImg);
-    newDiv.appendChild(newP);
+    newDiv.appendChild(nickDiv);
+    nickDiv.classList.add("reels_userinfo")
 
+    nickDiv.style.display = "flex"
+    nickDiv.style.alignItems = "center"
+    nickDiv.style.justifyContent = "center"
+    nickDiv.style.gap = ".2rem"
+
+    nickDiv.appendChild(newP)
+    nickDiv.appendChild(verified)
     reelsDiv.appendChild(newDiv)
 
 }
@@ -166,20 +180,60 @@ for(let i = 0; i < Reels.length; i++) {
 // suggestions
 
 
-    const suggestions = ["Xasdas","ertergf", "dsafasd"]
+    const suggestions = [
+        {
+            name: "_rl9",
+            img: "https://pbs.twimg.com/profile_images/1560186554781519873/wq6vdCir_400x400.jpg"
+    },
+    {
+        name: "cristiano",
+        img: "https://img.a.transfermarkt.technology/portrait/big/8198-1694609670.jpg?lm=1"
+    },
+    {
+        name: "leomessi",
+        img: "https://hips.hearstapps.com/hmg-prod/images/lionel-messi-celebrates-after-their-sides-third-goal-by-news-photo-1686170172.jpg"
+    }
+];
     let mainSugDiv = document.querySelector(".suggestions")
 
     for(let i = 0; i < suggestions.length; i++) {
+        let verified = document.createElement("span");
+        verified.innerHTML = `<i class="fa-solid fa-certificate"></i>`
+        verified.classList.add("verified")
     let sugDiv = document.createElement("div");
+    let leftDiv = document.createElement("div");
+    let imgDiv = document.createElement("div");
+    let userInfoDiv = document.createElement("div");
+
     let sugBtn = document.createElement("button");
+    let sugADiv = document.createElement("div");
     let sugA = document.createElement("a");
+    let sugP = document.createElement("p");
+    let sugImg = document.createElement("img")
+
+
     mainSugDiv.appendChild(sugDiv);
     sugDiv.classList.add("suggestion");
-    sugDiv.appendChild(sugA);
-    sugDiv.appendChild(sugBtn);
+    sugDiv.appendChild(leftDiv);
+    sugDiv.appendChild(sugBtn)
+    leftDiv.appendChild(imgDiv)
+    leftDiv.appendChild(userInfoDiv);
+    leftDiv.classList.add("sugLeftDiv")
+
+    imgDiv.appendChild(sugImg)
+    imgDiv.classList.add("sugImgDiv")
+    sugImg.src = suggestions[i].img
+    userInfoDiv.classList.add("userInfoDiv");
+    userInfoDiv.appendChild(sugADiv)
+    sugADiv.appendChild(sugA)
+    sugADiv.appendChild(verified)
+    verified.style.paddingLeft = "5px"
+    userInfoDiv.appendChild(sugP)
+
     sugBtn.classList.add("suggestion_btn")
     sugBtn.innerHTML = "Follow";
-    sugA.innerHTML = suggestions[i]
+    sugA.innerHTML = suggestions[i].name
+    sugP.innerHTML = "Suggested For You"
     }
 
 
