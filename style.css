@@ -79,6 +79,10 @@ body {
     flex-direction: column;
     width: 40%;
 }
+.active {
+    color: white;
+}
+
 .center_top {
     display: flex;
     align-items: center;
@@ -88,10 +92,11 @@ body {
 }
 .center_top a {
     text-decoration: none;
-    color: white;
     font-size: 1.1rem;
     font-weight: 600;
+    color: gray;
 }
+
 .reels {
     display: flex;
     align-items: center;
@@ -100,12 +105,13 @@ body {
     margin: 1rem 0 1rem 0;
 }
 .singleReel {
+    height: 70px;
+    width: 70px;
     position: relative;
     cursor: pointer;
     border-radius: 100%;
     font-family: "Roboto", sans-serif;
-    max-width: 65px;
-    height: 60px;
+    background: linear-gradient(#F3CE00, #C77100, #C60F9E);
     
 }
 .singleReel img {
@@ -113,11 +119,11 @@ body {
     width: 100%;
     position: relative;
     border: 3px solid transparent; 
-    background: linear-gradient(45deg,#F19604,#7A0287) border-box; 
     border-radius: 100%;
     position: relative;
-   
+    object-fit: cover;
 }
+
 .reelUsername {
     text-align: center;
     font-size: .7rem;
@@ -236,6 +242,9 @@ body {
     border: none;
     color: var(--lightBlue);
     cursor: pointer;
+}
+.suggestion_btn:hover, #switch:hover {
+    filter: brightness(1.5)
 }
 .sugLeftDiv {
     display: flex;

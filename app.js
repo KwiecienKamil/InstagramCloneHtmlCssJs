@@ -2,23 +2,23 @@
 // Data
 const Reels = [
     {
-        img: "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg",
+        img: "https://img.freepik.com/free-photo/handsome-man-smiling-happy-face-portrait-close-up_53876-139608.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1708300800&semt=ais",
         name: `Marcus_x`
     },
     {
-        img: "https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg",
+        img: "https://plus.unsplash.com/premium_photo-1664888035613-a6c75aa15b01?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z2lybCUyMHNtaWxpbmd8ZW58MHx8MHx8fDA%3D",
         name: "Ann1242"
     },
     {
-        img:"https://img.freepik.com/free-photo/close-up-happy-young-bearded-man-casual-clothes-laughing-feeling-joyful-standing-blue-background_1258-65751.jpg",
+        img:"https://thumbs.dreamstime.com/b/healthy-smile-dentistry-concept-man-handsome-guy-smiling-white-background-cheerful-macho-happy-satisfied-teeth-health-beauty-172096976.jpg",
         name: "TomM"
     },
     {
-        img:   "https://www.shutterstock.com/shutterstock/photos/1554086789/display_1500/stock-photo-close-up-portrait-of-yong-woman-casual-portrait-in-positive-view-big-smile-beautiful-model-posing-1554086789.jpg",
+        img:   "https://img.freepik.com/premium-photo/close-up-silly-cute-smiling-brunette-girl-leaning-hands-looking-with-admiration-white_1258-30409.jpg?w=360",
         name: "M_i_a"
     },
     {
-        img:  "https://www.shutterstock.com/image-photo/cheerful-african-american-guy-smiling-600nw-2029465811.jpg",
+        img:  "https://www.aconsciousrethink.com/wp-content/uploads/2021/08/when-a-guy-smiles-at-you.jpg",
         name: "broski12"
     },
    
@@ -178,8 +178,6 @@ for(let i = 0; i < Reels.length; i++) {
 }
 
 // suggestions
-
-
     const suggestions = [
         {
             name: "_rl9",
@@ -235,6 +233,21 @@ for(let i = 0; i < Reels.length; i++) {
     sugA.innerHTML = suggestions[i].name
     sugP.innerHTML = "Suggested For You"
     }
+
+
+// Functionality
+
+const forYouBtn = document.querySelector(".forYou");
+const followingBtn = document.querySelector(".following");
+
+const centerBtns = document.querySelectorAll(".center_btn");
+
+centerBtns.forEach(btn => {
+    btn.addEventListener(("click"), () => {
+        centerBtns.forEach(btn => btn.classList.remove("active"))
+        btn.classList.add("active")
+    })
+})
 
 
 
