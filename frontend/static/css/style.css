@@ -23,7 +23,7 @@ body {
     font-weight: 300;
     font-family: "Blinker", sans-serif;
 }
-#main-page {
+#app {
     position: relative;
     top: 3rem;
     left: 14%;

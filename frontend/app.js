@@ -1,61 +1,3 @@
-window.onload = function()
-{
-    const path = window.location.pathname.split("/");
-
-    switch(path[1])
-    {
-        case "":
-        {
-            loadPage("home");
-            break;
-        }
-        case "profile":
-        {
-            loadPage("profile");
-            break;
-        }
-        default:
-        {
-            loadPage("404");
-            break;
-        }
-    }
-
-    document.querySelectorAll(".menu__item").forEach((item) =>
-    {
-        item.addEventListener("click", function()
-        {
-            const path = item.getAttribute("value");
-            loadPage(path);
-            if(path == "home")
-            {
-                window.history.pushState("", "", "/");
-                return;
-            }
-
-            window.history.pushState("", "", path);
-        });
-    });
-
-    function loadPage($path)
-    {
-        if($path == "") return;
-
-        const container = document.getElementById("container");
-
-        const request = new XMLHttpRequest();
-        request.open("GET", "pages/" + $path + ".html");
-        request.send();
-        request.onload = function()
-        {
-            if(request.status == 200)
-            {
-                container.innerHTML = request.responseText;
-                document.title = $path;
-            }
-        }
-    }
-}
 // Data
 const Reels = [
     {
@@ -124,9 +66,6 @@ const Posts = [
     },
 ];
 
-
-
-
 const reelsDiv = document.querySelector(".reels");
 const postsDiv = document.querySelector(".posts");
 const heartBtn = document.querySelector(".like") 
@@ -160,170 +99,166 @@ for(let i = 0; i < Reels.length; i++) {
     nickDiv.appendChild(newP)
     nickDiv.appendChild(verified)
     reelsDiv.appendChild(newDiv)
-
 }
-for(let i = 0; i < Reels.length; i++) {
-    // Posts
-    let newPost = document.createElement("div")
-    let newInfo = document.createElement("div");
-    let descDiv = document.createElement("div");
-    let newProfilePic = document.createElement("div")
-    let newNavDiv = document.createElement("div")
-    let postImg = document.createElement("img")
-    let profileImg = document.createElement("img")
-    let newA = document.createElement("a");
-    let newA2 = document.createElement("a");
-    let newTime = document.createElement("p")
-    let newPar = document.createElement("p")
-    let newLikes = document.createElement("p")
 
-    // buttons
-    const loveBtn = document.createElement("button");
-    loveBtn.classList.add("loveBtn")
-    loveBtn.innerHTML = `<i class="fa-regular fa-heart like"></i>`
+// for(let i = 0; i < Reels.length; i++) {
+//     // Posts
+//     let newPost = document.createElement("div")
+//     let newInfo = document.createElement("div");
+//     let descDiv = document.createElement("div");
+//     let newProfilePic = document.createElement("div")
+//     let newNavDiv = document.createElement("div")
+//     let postImg = document.createElement("img")
+//     let profileImg = document.createElement("img")
+//     let newA = document.createElement("a");
+//     let newA2 = document.createElement("a");
+//     let newTime = document.createElement("p")
+//     let newPar = document.createElement("p")
+//     let newLikes = document.createElement("p")
 
-    const comBtn = document.createElement("button");
-    comBtn.classList.add("comBtn")
-    comBtn.innerHTML = `<i class="fa-regular fa-comment"></i>`
+//     // buttons
+//     const loveBtn = document.createElement("button");
+//     loveBtn.classList.add("loveBtn")
+//     loveBtn.innerHTML = `<i class="fa-regular fa-heart like"></i>`
 
-    const sendBtn = document.createElement("button");
-    sendBtn.classList.add("sendBtn")
-    sendBtn.innerHTML = `<i class="fa-regular fa-paper-plane"></i>`
+//     const comBtn = document.createElement("button");
+//     comBtn.classList.add("comBtn")
+//     comBtn.innerHTML = `<i class="fa-regular fa-comment"></i>`
 
-    const saveBtn = document.createElement("button");
-    saveBtn.classList.add("saveBtn")
-    saveBtn.innerHTML = `<i class="fa-regular fa-bookmark"></i>`
+//     const sendBtn = document.createElement("button");
+//     sendBtn.classList.add("sendBtn")
+//     sendBtn.innerHTML = `<i class="fa-regular fa-paper-plane"></i>`
+
+//     const saveBtn = document.createElement("button");
+//     saveBtn.classList.add("saveBtn")
+//     saveBtn.innerHTML = `<i class="fa-regular fa-bookmark"></i>`
 
     
 
-    // post
-    newPost.classList.add("singlePost");
-    newPost.appendChild(newInfo)
-    newInfo.classList.add("postInfo") 
-    newInfo.appendChild(newProfilePic)
-    newProfilePic.appendChild(profileImg);
-    profileImg.src= Posts[i].profile
-    newProfilePic.classList.add("profilePicture");
-    newInfo.appendChild(newA);
-    newInfo.appendChild(newTime)
-    newTime.innerHTML = `${Posts[i].time}d`
-    newA.innerHTML = Posts[i].name
-    newPost.appendChild(postImg);
-    postImg.src= Posts[i].img;
-    newPost.appendChild(newNavDiv);
-    newNavDiv.classList.add("postNav")
-    newNavDiv.appendChild(loveBtn)
-    newNavDiv.appendChild(comBtn)
-    newNavDiv.appendChild(sendBtn)
-    newNavDiv.appendChild(saveBtn)
-    saveBtn.classList.add("saveBtn")
-    // Likes
-    newPost.appendChild(newLikes)
-    newLikes.innerHTML = `${Posts[i].likes} likes`
+//     // post
+//     newPost.classList.add("singlePost");
+//     newPost.appendChild(newInfo)
+//     newInfo.classList.add("postInfo") 
+//     newInfo.appendChild(newProfilePic)
+//     newProfilePic.appendChild(profileImg);
+//     profileImg.src= Posts[i].profile
+//     newProfilePic.classList.add("profilePicture");
+//     newInfo.appendChild(newA);
+//     newInfo.appendChild(newTime)
+//     newTime.innerHTML = `${Posts[i].time}d`
+//     newA.innerHTML = Posts[i].name
+//     newPost.appendChild(postImg);
+//     postImg.src= Posts[i].img;
+//     newPost.appendChild(newNavDiv);
+//     newNavDiv.classList.add("postNav")
+//     newNavDiv.appendChild(loveBtn)
+//     newNavDiv.appendChild(comBtn)
+//     newNavDiv.appendChild(sendBtn)
+//     newNavDiv.appendChild(saveBtn)
+//     saveBtn.classList.add("saveBtn")
+//     // Likes
+//     newPost.appendChild(newLikes)
+//     newLikes.innerHTML = `${Posts[i].likes} likes`
 
-    loveBtn.addEventListener("click", () => {
-        newLikes.innerHTML = `${Posts[i].likes + 1} likes`
+//     loveBtn.addEventListener("click", () => {
+//         newLikes.innerHTML = `${Posts[i].likes + 1} likes`
         
-    })
+//     })
 
-    // desc
-    newPost.appendChild(descDiv)
-    descDiv.style.display = "flex";
-    descDiv.style.alignItems = "center";
-    descDiv.style.gap = "5px";
-    descDiv.style.marginTop = "5px";
-    descDiv.appendChild(newA2);
-    descDiv.appendChild(newPar);
-    newA2.innerHTML = Posts[i].name
-    newA2.style.fontWeight = "600"
-    newPar.innerHTML = Posts[i].desc
-    postsDiv.appendChild(newPost)
-}
+//     // desc
+//     newPost.appendChild(descDiv)
+//     descDiv.style.display = "flex";
+//     descDiv.style.alignItems = "center";
+//     descDiv.style.gap = "5px";
+//     descDiv.style.marginTop = "5px";
+//     descDiv.appendChild(newA2);
+//     descDiv.appendChild(newPar);
+//     newA2.innerHTML = Posts[i].name
+//     newA2.style.fontWeight = "600"
+//     newPar.innerHTML = Posts[i].desc
+//     postsDiv.appendChild(newPost)
+// }
 
-// suggestions
-    const suggestions = [
-        {
-            name: "_rl9",
-            img: "https://pbs.twimg.com/profile_images/1560186554781519873/wq6vdCir_400x400.jpg"
-    },
-    {
-        name: "cristiano",
-        img: "https://img.a.transfermarkt.technology/portrait/big/8198-1694609670.jpg?lm=1"
-    },
-    {
-        name: "leomessi",
-        img: "https://hips.hearstapps.com/hmg-prod/images/lionel-messi-celebrates-after-their-sides-third-goal-by-news-photo-1686170172.jpg"
-    }
-];
-    let mainSugDiv = document.querySelector(".suggestions")
+// // suggestions
+//     const suggestions = [
+//         {
+//             name: "_rl9",
+//             img: "https://pbs.twimg.com/profile_images/1560186554781519873/wq6vdCir_400x400.jpg"
+//     },
+//     {
+//         name: "cristiano",
+//         img: "https://img.a.transfermarkt.technology/portrait/big/8198-1694609670.jpg?lm=1"
+//     },
+//     {
+//         name: "leomessi",
+//         img: "https://hips.hearstapps.com/hmg-prod/images/lionel-messi-celebrates-after-their-sides-third-goal-by-news-photo-1686170172.jpg"
+//     }
+// ];
+//     let mainSugDiv = document.querySelector(".suggestions")
 
-    for(let i = 0; i < suggestions.length; i++) {
-        let verified = document.createElement("span");
-        verified.innerHTML = `<i class="fa-solid fa-certificate"></i>`
-        verified.classList.add("verified")
-    let sugDiv = document.createElement("div");
-    let leftDiv = document.createElement("div");
-    let imgDiv = document.createElement("div");
-    let userInfoDiv = document.createElement("div");
+//     for(let i = 0; i < suggestions.length; i++) {
+//         let verified = document.createElement("span");
+//         verified.innerHTML = `<i class="fa-solid fa-certificate"></i>`
+//         verified.classList.add("verified")
+//     let sugDiv = document.createElement("div");
+//     let leftDiv = document.createElement("div");
+//     let imgDiv = document.createElement("div");
+//     let userInfoDiv = document.createElement("div");
 
-    let sugBtn = document.createElement("button");
-    let sugADiv = document.createElement("div");
-    let sugA = document.createElement("a");
-    let sugP = document.createElement("p");
-    let sugImg = document.createElement("img")
-
-
-    mainSugDiv.appendChild(sugDiv);
-    sugDiv.classList.add("suggestion");
-    sugDiv.appendChild(leftDiv);
-    sugDiv.appendChild(sugBtn)
-    leftDiv.appendChild(imgDiv)
-    leftDiv.appendChild(userInfoDiv);
-    leftDiv.classList.add("sugLeftDiv")
-
-    imgDiv.appendChild(sugImg)
-    imgDiv.classList.add("sugImgDiv")
-    sugImg.src = suggestions[i].img
-    userInfoDiv.classList.add("userInfoDiv");
-    userInfoDiv.appendChild(sugADiv)
-    sugADiv.appendChild(sugA)
-    sugADiv.appendChild(verified)
-    verified.style.paddingLeft = "5px"
-    userInfoDiv.appendChild(sugP)
-
-    sugBtn.classList.add("suggestion_btn")
-    sugBtn.innerHTML = "Follow";
-    sugA.innerHTML = suggestions[i].name
-    sugP.innerHTML = "Suggested For You"
-    }
+//     let sugBtn = document.createElement("button");
+//     let sugADiv = document.createElement("div");
+//     let sugA = document.createElement("a");
+//     let sugP = document.createElement("p");
+//     let sugImg = document.createElement("img")
 
 
-// Functionality
+//     mainSugDiv.appendChild(sugDiv);
+//     sugDiv.classList.add("suggestion");
+//     sugDiv.appendChild(leftDiv);
+//     sugDiv.appendChild(sugBtn)
+//     leftDiv.appendChild(imgDiv)
+//     leftDiv.appendChild(userInfoDiv);
+//     leftDiv.classList.add("sugLeftDiv")
 
-const forYouBtn = document.querySelector(".forYou");
-const followingBtn = document.querySelector(".following");
+//     imgDiv.appendChild(sugImg)
+//     imgDiv.classList.add("sugImgDiv")
+//     sugImg.src = suggestions[i].img
+//     userInfoDiv.classList.add("userInfoDiv");
+//     userInfoDiv.appendChild(sugADiv)
+//     sugADiv.appendChild(sugA)
+//     sugADiv.appendChild(verified)
+//     verified.style.paddingLeft = "5px"
+//     userInfoDiv.appendChild(sugP)
 
-const centerBtns = document.querySelectorAll(".center_btn");
-
-centerBtns.forEach(btn => {
-    btn.addEventListener(("click"), () => {
-        centerBtns.forEach(btn => btn.classList.remove("active"))
-        btn.classList.add("active")
-    })
-})
-
-// Follow
-
-const followBtns = document.querySelectorAll(".suggestion_btn");
-
-followBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        btn.innerHTML = "Followed"
-        btn.style.color = "gray";
-        btn.style.cursor = "default"
-    })
-})
+//     sugBtn.classList.add("suggestion_btn")
+//     sugBtn.innerHTML = "Follow";
+//     sugA.innerHTML = suggestions[i].name
+//     sugP.innerHTML = "Suggested For You"
+//     }
 
 
+// // Functionality
 
+// const forYouBtn = document.querySelector(".forYou");
+// const followingBtn = document.querySelector(".following");
 
+// const centerBtns = document.querySelectorAll(".center_btn");
+
+// centerBtns.forEach(btn => {
+//     btn.addEventListener(("click"), () => {
+//         centerBtns.forEach(btn => btn.classList.remove("active"))
+//         btn.classList.add("active")
+//     })
+// })
+
+// // Follow
+
+// const followBtns = document.querySelectorAll(".suggestion_btn");
+
+// followBtns.forEach(btn => {
+//     btn.addEventListener("click", () => {
+//         btn.innerHTML = "Followed"
+//         btn.style.color = "gray";
+//         btn.style.cursor = "default"
+//     })
+// })
