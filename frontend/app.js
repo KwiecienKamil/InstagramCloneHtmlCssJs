@@ -1,28 +1,61 @@
-const route = (event) => {
-    event = event || window.event;
-    event.preventDefault();
-    window.history.pushState({}, "", event.target.href)
-    handleLocation();
-}
+window.onload = function()
+{
+    const path = window.location.pathname.split("/");
 
-    const routes = {
-        404: "/404.html",
-        "/": "/pages/index.html",
-        "/index.html": "/pages/index.html",
-        "/profile": "/pages/profile.html"
+    switch(path[1])
+    {
+        case "":
+        {
+            loadPage("home");
+            break;
+        }
+        case "profile":
+        {
+            loadPage("profile");
+            break;
+        }
+        default:
+        {
+            loadPage("404");
+            break;
+        }
     }
-const handleLocation = async () => {
-    const path = window.location.pathname;
-    const route = routes[path] || routes[404];
-    const html = await fetch(route).then((data) => data.text());
-    document.getElementById("main-page").innerHTML = html;
-   
+
+    document.querySelectorAll(".menu__item").forEach((item) =>
+    {
+        item.addEventListener("click", function()
+        {
+            const path = item.getAttribute("value");
+            loadPage(path);
+            if(path == "home")
+            {
+                window.history.pushState("", "", "/");
+                return;
+            }
+
+            window.history.pushState("", "", path);
+        });
+    });
+
+    function loadPage($path)
+    {
+        if($path == "") return;
+
+        const container = document.getElementById("container");
+
+        const request = new XMLHttpRequest();
+        request.open("GET", "pages/" + $path + ".html");
+        request.send();
+        request.onload = function()
+        {
+            if(request.status == 200)
+            {
+                container.innerHTML = request.responseText;
+                document.title = $path;
+            }
+        }
+    }
 }
-window.onpopstate = handleLocation
-window.route = route
-
-handleLocation();
-
 // Data
 const Reels = [
     {
@@ -290,3 +323,7 @@ followBtns.forEach(btn => {
         btn.style.cursor = "default"
     })
 })
+
+
+
+
