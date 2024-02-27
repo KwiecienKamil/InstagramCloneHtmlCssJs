@@ -67,51 +67,60 @@ const Reels = [
 
 const Posts = [
     {
+        id: 1,
         img: "https://www.visitnorfolk.com/wp-content/uploads/2022/06/Beach-Day-Ocean-View.jpeg",
         profile: "https://t4.ftcdn.net/jpg/03/14/06/09/360_F_314060921_IwOZu9SgVuZqZJyusLnmirX2rNKh7h2F.jpg",
         name: "Sofie_x",
         time: 5,
         likes: 3972,
-        desc: "Vacations🥤"
+        desc: "Vacations🥤",
+        isLiked: false
     },
     {
+        id: 2,
         img: "https://a.cdn-hotels.com/gdcs/production181/d1415/58842a68-207a-4fb1-a85c-102eba660798.jpg?impolicy=fcrop&w=800&h=533&q=medium",
         profile: "https://www.recordnet.com/gcdn/presto/2021/03/22/NRCD/9d9dd9e4-e84a-402e-ba8f-daa659e6e6c5-PhotoWord_003.JPG",
         name: "Photograph",
         time: 3,
         likes: 2202,
-        desc: "Insane view"
+        desc: "Insane view",
+        isLiked: false
     },
     {
+        id: 3,
         img: "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2021-09-breakfast-grits%2FNew%20Finals%2F2021-10-12_ATK8035",
         profile: "https://media.istockphoto.com/id/956600100/vector/chef-woman-gesturing-ok.jpg?s=612x612&w=0&k=20&c=ZIGRIbmSgMZRuywZ59JJBgEaDmeVeWmpyFjoUU1iry4=",
         name: "Chef",
         time: 1,
         likes: 14125,
-        desc: "Breakfast🍲🍲🍲"
+        desc: "Breakfast🍲🍲🍲",
+        isLiked: false
     },
     {
+        id: 4,
         img: "https://images3.alphacoders.com/133/1332803.png",
         profile: "https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317443/nice-man-smiling.jpg",
         name: "Barry",
         time: 2,
         likes: 321605,
-        desc: "My new painting"
+        desc: "My new painting",
+        isLiked: false
     },
     {
+        id: 5,
         img: "https://www.leetdesk.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fleetdesk%2Fc5527f47-def9-433c-9cce-23f286dbfea2_Front.jpg%3Fauto%3Dcompress%2Cformat%26rect%3D0%2C374%2C4000%2C2250%26w%3D1920%26h%3D1080&w=3840&q=75",
         profile: "https://wallpapers.com/images/hd/cool-profile-picture-87h46gcobjl5e4xu.jpg",
         name: "Gamer123",
         time: 1,
         likes: 111605,
-        desc: "Setup for 2024"
+        desc: "Setup for 2024",
+        isLiked: false
     },
 ];
 
 window.onload = () => {
 const reelsDiv = document.querySelector(".reels");
 const postsDiv = document.querySelector(".posts");
-const heartBtn = document.querySelector(".like") 
 
 
 for(let i = 0; i < Reels.length; i++) {
@@ -162,7 +171,7 @@ for(let i = 0; i < Reels.length; i++) {
     // buttons
     const loveBtn = document.createElement("button");
     loveBtn.classList.add("loveBtn")
-    loveBtn.innerHTML = `<i class="fa-regular fa-heart like"></i>`
+    loveBtn.innerHTML = `<i class="fa-regular fa-heart" id="btn_${Posts[i].id}"></i>`
 
     const comBtn = document.createElement("button");
     comBtn.classList.add("comBtn")
@@ -203,9 +212,19 @@ for(let i = 0; i < Reels.length; i++) {
     newPost.appendChild(newLikes)
     newLikes.innerHTML = `${Posts[i].likes} likes`
 
+
     loveBtn.addEventListener("click", () => {
-        newLikes.innerHTML = `${Posts[i].likes + 1} likes`
-        
+        const currentId = Posts[i].id
+        const currentLikeIcon = document.getElementById(`btn_${currentId}`);
+            if(Posts[currentId].isLiked === false) {
+                newLikes.innerHTML = `${Posts[i].likes + 1} likes`;
+                currentLikeIcon.style.color = "red"
+                Posts[currentId].isLiked = true
+            }else {
+                newLikes.innerHTML = `${Posts[i].likes} likes`;
+                currentLikeIcon.style.color = "white"
+                Posts[currentId].isLiked = false
+            }
     })
 
     // desc
@@ -282,8 +301,6 @@ for(let i = 0; i < Reels.length; i++) {
 
 // Functionality
 
-const forYouBtn = document.querySelector(".forYou");
-const followingBtn = document.querySelector(".following");
 
 const centerBtns = document.querySelectorAll(".center_btn");
 
